@@ -11,12 +11,12 @@ export class LoginComponent implements OnInit {
 
   public username: string = "";
   public password: string = "";
-  public errorMsg: boolean = false;
+  public showError: boolean = false;
 
   constructor(private service:LoginService,private router:Router) { }
 
   ngOnInit(): void {
-    this.errorMsg = false;
+    this.showError = false;
     this.username = "karthikeyan.n";
     this.password = "123456";
   }
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.service.checkLogin(this.username,this.password).subscribe(res => {
       if(res == null){
         alert("Invalid password..!!");
-        this.errorMsg = true;
+        this.showError = true;
       }
       else
       {

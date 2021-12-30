@@ -12,7 +12,7 @@
   <tr>
     <td><button (click)="checkLogin()">Login</button> </td>
   </tr>
-  <tr *ngIf="errorMsg">
+  <tr *ngIf="showError">
     <td><span style="color: RED;font-weight: bolder;">Invalid Credentials..!!</span></td>
   </tr>
 </table>

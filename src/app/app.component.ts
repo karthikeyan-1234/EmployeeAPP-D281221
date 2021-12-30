@@ -14,7 +14,7 @@ export class AppComponent {
 
   ngOnInit():void{
     this.bnIdle.startWatching(20).subscribe((isTimeOut:boolean) => {
-      if(isTimeOut){
+      if(isTimeOut && localStorage.getItem("username")){
         console.log("Timed out. Logging off..");
         localStorage.removeItem("username");
         localStorage.removeItem("token");
