@@ -28,6 +28,13 @@ export class AddComponent implements OnInit {
       this.resetForm(form);
       console.log("Employee Added sucessfully");
       console.log(res);
+
+      this.service.getAllEmployees().then(res => {
+        this.toaster.success("Employee list refreshed..!!")
+      },err => {
+        this.toaster.error("Unable to update Employee list..!!")
+      })
+
     },err => {
       this.toaster.error("Unable to add employee..!!","Employee");
       console.log("Unable to add employee");

@@ -10,16 +10,20 @@ import { catchError, map } from 'rxjs/operators';
 export class EmployeeService {
 
   employeeData: Employee;
+  employeeList: Employee[];
 
   constructor(  private http: HttpClient) {
-    this.employeeData = {}
+    this.employeeData = {};
+    this.employeeList = [];
    }
 
 getAllEmployees(){
-  return this.http.get<Employee[]>("https://localhost:5021/ocelot/Employee/GetAllEmployees").pipe(
-    map((data:Employee[]) => {return data;}),
+   return this.http.get<Employee[]>("https://localhost:5021/ocelot/Employee/GetAllEmployees")
+  .toPromise().then(res => this.employeeList = res as Employee[]);
+  /*.pipe(
+    map((data:Employee[]) => { this.employeeList = data; return data;}),
     catchError(error => {return throwError("Something Wrong..!!");})
-  );
+  );*/
 }
 
 addEmployee(empData ?: Employee){

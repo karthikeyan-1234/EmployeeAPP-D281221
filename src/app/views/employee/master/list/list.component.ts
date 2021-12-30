@@ -13,15 +13,14 @@ export class ListComponent implements OnInit {
 
   public empList : Employee[] = [];
 
-  constructor(private service:EmployeeService,private router: Router, private toastr: ToastrService) { }
+  constructor(public service:EmployeeService,private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.refreshTable();
   }
 
   refreshTable(): void {
-    this.service.getAllEmployees().subscribe(empList => {
-      this.empList = empList;
+    this.service.getAllEmployees().then(empList => {
       this.toastr.success("Employees Loaded..!!","Success..!!");
       console.log(this.empList);
     },err => {

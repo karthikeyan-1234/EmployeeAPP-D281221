@@ -9,7 +9,7 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let emp of empList">
+          <tr *ngFor="let emp of service.employeeList">
             <td>{{emp.id}}</td> <td>{{emp.name}}</td> <td>{{emp.age}}</td>  <td>{{emp.weight}}</td>
             <td>
               <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-pencil" style="font-size:15px"></i></button>
