@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td><label>Username : </label></td>
+    <td><input [(ngModel)] = "username"/> </td>
+  </tr>
+
+  <tr>
+    <td><label>Password: </label></td>
+    <td><input type="password" [(ngModel)] = "password" /></td>
+  </tr>
+
+  <tr>
+    <td><button (click)="checkLogin()">Login</button> </td>
+  </tr>
+  <tr *ngIf="errorMsg">
+    <td><span style="color: RED;font-weight: bolder;">Invalid Credentials..!!</span></td>
+  </tr>
+</table>
