@@ -1,6 +1,6 @@
 export interface Employee {
-  id : number;
-  name : string;
-  age : number;
-  weight : number;
+  id ?: number;
+  name ?: string;
+  age ?: number;
+  weight ?: number;
 }

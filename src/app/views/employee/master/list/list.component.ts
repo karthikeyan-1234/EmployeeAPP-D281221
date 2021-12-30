@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -12,7 +13,7 @@ export class ListComponent implements OnInit {
 
   public empList : Employee[] = [];
 
-  constructor(private service:EmployeeService,private router: Router) { }
+  constructor(private service:EmployeeService,private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.refreshTable();
@@ -21,6 +22,7 @@ export class ListComponent implements OnInit {
   refreshTable(): void {
     this.service.getAllEmployees().subscribe(empList => {
       this.empList = empList;
+      this.toastr.success("Employees Loaded..!!","Success..!!");
       console.log(this.empList);
     },err => {
       console.log("Error in calling Employee service :");

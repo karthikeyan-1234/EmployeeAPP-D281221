@@ -8,13 +8,24 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmployeeService {
-  constructor(  private http: HttpClient) { }
+
+  employeeData: Employee;
+
+  constructor(  private http: HttpClient) {
+    this.employeeData = {}
+   }
 
 getAllEmployees(){
   return this.http.get<Employee[]>("https://localhost:5021/ocelot/Employee/GetAllEmployees").pipe(
     map((data:Employee[]) => {return data;}),
     catchError(error => {return throwError("Something Wrong..!!");})
   );
+}
+
+addEmployee(empData ?: Employee){
+  console.log("Adding Employee..!!");
+  console.log(empData);
+  return this.http.post("https://localhost:5021/ocelot/Employee/AddEmployee",empData)
 }
 
 }

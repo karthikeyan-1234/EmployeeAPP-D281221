@@ -61,6 +61,8 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return this.service.refreshLogin(this.username).pipe(switchMap((newToken: TokenInfo) => {
       if (newToken) {
+        console.log("Refreshed token :");
+        console.log(newToken.token);
         var new_request = request.clone({
           setHeaders: {
             "Authorization": 'Bearer ' + newToken.token
