@@ -4,7 +4,7 @@
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
-            <th>ID</th> <th>Name</th> <th>Age</th>  <th>Weight</th> <th></th>
+            <th>ID</th> <th>Name</th> <th>Age</th>  <th>Weight</th> <th>Actions</th>
           </tr>
         </thead>
 
@@ -12,17 +12,19 @@
           <tr *ngFor="let emp of service.employeeList">
             <td>{{emp.id}}</td> <td>{{emp.name}}</td> <td>{{emp.age}}</td>  <td>{{emp.weight}}</td>
             <td>
-              <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-pencil" style="font-size:15px"></i></button>
-              <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-trash" style="font-size:15px"></i></button>
-              <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-save"  style="font-size:15px"></i></button>
-              <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-ban"  style="font-size:15px"></i></button>
+              <button class="btn btn-default btn-sm shadow-none" (click)="edit(emp)" ><i class="fa fa-pencil" style="font-size:15px"></i></button>
+              <button class="btn btn-default btn-sm shadow-none" (click)="delete(emp)"><i class="fa fa-trash" style="font-size:15px"></i></button>
+              <button class="btn btn-default btn-sm shadow-none" data-toggle="modal" data-target="#empDetailModal" data-backdrop="static" (click) = "showDets(emp)" ><i class="fa fa-file" style="font-size:15px"></i></button>
+              <!-- <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-save"  style="font-size:15px"></i></button>
+              <button class="btn btn-default btn-sm shadow-none"><i class="fa fa-ban"  style="font-size:15px"></i></button> -->
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-2"><button (click)="clear()">LogOff</button></div>
-  </div>
+</div>
+
+<div style="margin-top: 10px;" *ngIf="showDetails">
+  <app-detail [emp] = "detailEmp"></app-detail>
 </div>

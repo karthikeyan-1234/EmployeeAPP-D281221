@@ -1,20 +1,31 @@
 <form #form="ngForm" style="width:94%" autocomplete="off" (submit)="onSubmit(form)">
   <div class="form-group">
+    <label>ID</label>
+    <input name="Id" readonly #Name="ngModel" [(ngModel)]="service.addData.id" class="form-control">
+  </div>
+  <div class="form-group">
     <label>Name</label>
-    <input name="Name" #Name="ngModel" [(ngModel)]="service.employeeData.name" class="form-control" required>
+    <input type="text" name="Name" #Name="ngModel" [(ngModel)]="service.addData.name" class="form-control" required>
     <div class="validation-error" *ngIf="Name.touched && Name.invalid">*This is required</div>
   </div>
   <div class="form-group">
     <label>Age</label>
-    <input type="number"  name="Age" #Age="ngModel" [(ngModel)]="service.employeeData.age" class="form-control" required>
+    <input type="number"  name="Age" #Age="ngModel" [(ngModel)]="service.addData.age" class="form-control" required>
     <div class="validation-error" *ngIf="Age.touched && Age.invalid">*This is required</div>
   </div>
   <div class="form-group">
     <label>Weight</label>
-    <input type="number" name="Weight" #Weight="ngModel" [(ngModel)]="service.employeeData.weight" class="form-control" required>
+    <input type="number" name="Weight" #Weight="ngModel" [(ngModel)]="service.addData.weight" class="form-control" required>
     <div class="validation-error" *ngIf="Weight.touched && Weight.invalid">*This is required</div>
   </div>
-  <div class="form-group" style="margin-top: 3px;">
-    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">Add</button>
+  <div>
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="submit"  [disabled]="form.invalid" class="btn btn-sm btn-block">Save</button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" (click)="ClearForm(form)" class="btn btn-sm btn-block">Clear</button>
+      </div>
+    </div>
   </div>
 </form>

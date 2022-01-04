@@ -44,12 +44,12 @@ export class JwtInterceptor implements HttpInterceptor {
             console.log("Token Expired. Refreshing token..!!")
             return this.RefreshToken(request,next);
           }
-          this.router.navigate(['']);
+          this.ClearLocalStorage();
           return next.handle(request);
         }
         else
         {
-          this.router.navigate(['']);
+          this.ClearLocalStorage();
           return next.handle(request);
         }
 
@@ -78,6 +78,13 @@ export class JwtInterceptor implements HttpInterceptor {
 
   }
 
+
+  ClearLocalStorage(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    this.router.navigate(['']);
+
+  }
 }
 
 

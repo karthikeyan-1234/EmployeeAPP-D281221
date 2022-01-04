@@ -11,6 +11,18 @@ button[type="submit"]{
   color: #fff;
 
 }
+
+button[type="button"]{
+  background-color: gray;
+  color: #fff;
+
+}
+
+button.test{
+  background-color: black;
+  color: #fff;
+}
+
 .jumbotron{
   background-color: #fff;
   padding-top: 32px;

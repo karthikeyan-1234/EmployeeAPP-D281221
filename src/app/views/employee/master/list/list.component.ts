@@ -12,6 +12,8 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class ListComponent implements OnInit {
 
   public empList : Employee[] = [];
+  public showDetails : boolean = true;
+  public detailEmp : Employee = {};
 
   constructor(public service:EmployeeService,private router: Router, private toastr: ToastrService) { }
 
@@ -20,19 +22,29 @@ export class ListComponent implements OnInit {
   }
 
   refreshTable(): void {
-    this.service.getAllEmployees().then(empList => {
+    this.service.getAllEmployees().then(res => {
       this.toastr.success("Employees Loaded..!!","Success..!!");
-      console.log(this.empList);
     },err => {
       console.log("Error in calling Employee service :");
       console.log(err);
+      this.router.navigate(['login']);
     })
   }
 
-  clear(): void {
-    localStorage.removeItem("username");
-    localStorage.removeItem("token");
-    this.router.navigate(["login"]);
+
+  edit(emp: Employee): void{
+
+    console.log("Editing Employee : ");
+    console.log(emp);
+
+    this.service.addData = emp;
+    //this.refreshTable();
   }
 
+  delete(emp: Employee): void{
+  }
+
+  showDets(emp: Employee): void{
+    this.detailEmp = emp;
+  }
 }

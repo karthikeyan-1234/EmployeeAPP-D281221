@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './common/jwt.interceptor';
 import { MasterComponent } from './views/employee/master/master.component';
+import { DetailComponent } from './views/employee/master/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MasterComponent } from './views/employee/master/master.component';
     ListComponent,
     AddComponent,
     LoginComponent,
-    MasterComponent
+    MasterComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

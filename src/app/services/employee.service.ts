@@ -10,10 +10,12 @@ import { catchError, map } from 'rxjs/operators';
 export class EmployeeService {
 
   employeeData: Employee;
+  addData: Employee;
   employeeList: Employee[];
 
   constructor(  private http: HttpClient) {
     this.employeeData = {};
+    this.addData = {};
     this.employeeList = [];
    }
 
@@ -30,6 +32,12 @@ addEmployee(empData ?: Employee){
   console.log("Adding Employee..!!");
   console.log(empData);
   return this.http.post("https://localhost:5021/ocelot/Employee/AddEmployee",empData)
+}
+
+updateEmployee(empData ?: Employee){
+  console.log("Updating Employee..!!");
+  console.log(empData);
+  return this.http.put("https://localhost:5021/ocelot/Employee/UpdateEmployee",empData);
 }
 
 }

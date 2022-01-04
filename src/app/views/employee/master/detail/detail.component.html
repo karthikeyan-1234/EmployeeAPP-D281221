@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div class="modal fade" id="empDetailModal" tabindex="-1" role="dialog" aria-labelledby="empDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <ng-container *ngTemplateOutlet="modalBody; context:{emp: emp}"></ng-container>
+  </div>
+</div>
+
+
+<ng-template #modalBody let-emp = "emp">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="empDetailModalLabel">Details of {{emp.name}}</h5>
+      <a href="#" class="close" tabindex="0" style="text-decoration: none;" role="button" data-dismiss="modal"><span>&times;</span></a>
+    </div>
+
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-6"><label>ID :</label> </div>
+        <div class="col-lg-6">{{emp.id}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6"><label>Name :</label> </div>
+        <div class="col-lg-6">{{emp.name}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6"><label>Age :</label> </div>
+        <div class="col-lg-6">{{emp.age}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6"><label>Weight :</label> </div>
+        <div class="col-lg-6">{{emp.weight}}</div>
+      </div>
+    </div>
+
+
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+    </div>
+  </div>
+</ng-template>
